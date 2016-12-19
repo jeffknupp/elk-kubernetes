@@ -6,6 +6,7 @@ metadata:
     k8s-app: kibana
     kubernetes.io/name: "Kibana"
 spec:
+  type: LoadBalancer
   ports:
   - port: 5601
     protocol: TCP
@@ -37,22 +38,13 @@ spec:
         image: kayrus/docker-kibana-kubernetes:5.0.1
         #image: docker.elastic.co/kibana/kibana:5.0.1
         imagePullPolicy: Always
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 5601
-          timeoutSeconds: 1
-          successThreshold: 1
         env:
           - name: ELASTICSEARCH_URL
-            valueFrom:
-              configMapKeyRef:
-                name: es-env
-                key: es-client-endpoint
+            value: "http://elasticsearch:9200"
           - name: SERVER_HOST
             value: "0.0.0.0"
-          - name: SERVER_BASEPATH
-            value: "/kibana"
+            #          - name: SERVER_BASEPATH
+            #value: "/kibana"
         ports:
         - containerPort: 5601
           name: ui

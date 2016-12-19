@@ -68,6 +68,8 @@ spec:
             configMapKeyRef:
               name: es-env
               key: es-client-endpoint
+        - name: NETWORK_HOST
+          value: "_eth0_"
         ports:
         - name: transport
           containerPort: 9300

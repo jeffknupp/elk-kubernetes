@@ -6,7 +6,7 @@ metadata:
     component: elasticsearch
     role: data
 spec:
-  replicas: ${ES_DATA_REPLICAS}
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -78,11 +78,8 @@ spec:
             configMapKeyRef:
               name: es-env
               key: es-client-endpoint
-        - name: ES_PERSISTENT
-          valueFrom:
-            configMapKeyRef:
-              name: es-env
-              key: es-persistent-storage
+        - name: NETWORK_HOST
+          value: "_eth0_"
         ports:
         - name: transport
           containerPort: 9300

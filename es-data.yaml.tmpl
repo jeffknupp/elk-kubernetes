@@ -102,6 +102,8 @@ spec:
           mountPath: /data
         - name: es-config
           mountPath: /etc/elasticsearch
+        - name: NETWORK_HOST
+          value: "_eth0_"
         # /pre-stop-hook.sh hook is already used in /run.sh on pod shutdown
         #lifecycle:
         #  preStop:
