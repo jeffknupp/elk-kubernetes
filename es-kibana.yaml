@@ -6,6 +6,7 @@ metadata:
     k8s-app: kibana-logging
     kubernetes.io/name: "Kibana"
 spec:
+  type: LoadBalancer
   ports:
   - port: 5601
     protocol: TCP

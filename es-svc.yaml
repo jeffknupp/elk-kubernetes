@@ -10,6 +10,7 @@ metadata:
     prometheus.io/path: '/_prometheus/metrics'
     prometheus.io/port: '9200'
 spec:
+  type: LoadBalancer
   selector:
     component: elasticsearch
     role: client
